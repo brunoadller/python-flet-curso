@@ -9,9 +9,20 @@ def main(page: ft.Page):
         new_task.value = ''
         page.update()
     
-    new_task = ft.TextField(hint_text="Insira uma tarefa...")
+    new_task = ft.TextField(hint_text="Insira uma tarefa...", expand=True)
     new_button = ft.FloatingActionButton(icon=ft.Icons.ADD, on_click=add_task)
 
-    page.add(new_task, new_button)
+    card  = ft.Column(
+        width=400,
+        controls=[
+            ft.Row(
+                controls= [
+                    new_task,
+                    new_button
+                ]
+            )
+        ]
+    )
+    page.add(card)
 
 ft.app(target= main, view=ft.FLET_APP)
